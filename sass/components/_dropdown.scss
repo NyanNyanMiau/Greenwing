@@ -1,3 +1,22 @@
+@mixin arrow {
+	display: inline-block;
+	border: solid black;
+	border-width: 0 1px 1px 0;
+	padding: 4px;
+}
+@mixin arrow-down {
+	@include arrow;
+	transform: rotate(45deg) translate3d(-25%,-25%,0);
+	-webkit-transform: rotate(45deg) translate3d(-25%,-25%,0);
+}
+
+@mixin arrow-right {
+	@include arrow;
+	transform: rotate(-45deg) translate3d(-25%,-25%,0);
+	-webkit-transform: rotate(-45deg) translate3d(-25%,-25%,0);
+}
+
+
 #dropdown {
   .dropdown-submenu-open {
     border-color: $default-border-color;
@@ -7,7 +26,7 @@
       border-radius: 50%;
     }
 
-    .fa {
+    &:not(.show-icons) .fa {
       display: none;
     }
 
@@ -39,4 +58,8 @@
 .dropdown-menu-link-text,
 .dropdown-menu-link-icon {
   color: inherit;
+}
+
+.dropdown {
+  white-space: nowrap;
 }

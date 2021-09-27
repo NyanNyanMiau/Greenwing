@@ -45,7 +45,6 @@
   font-size: 1rem;
   width: auto;
   text-decoration: none;
-  font-family: "montserrat", sans-serif;
   transition: all 0.3s;
 
   @include button(
@@ -102,4 +101,10 @@
     height: $size;
     line-height: $size;
   }
+}
+
+.btn.btn-light:hover,
+.btn.btn-light.active {
+	background-color: $default-bg-color-15;
+	color: black;
 }

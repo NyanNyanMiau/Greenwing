@@ -12,6 +12,7 @@
   table {
     border-collapse: separate;
     border-spacing: 10px 0;
+	background-color: transparent;
 
     @media (max-width: 767px) {
       border-spacing: 1px 0;
@@ -20,12 +21,12 @@
     .board-column-header {
       &::before {
         content: "";
-        height: 16px;
-        background-color: $default-bg-color;
+        height: 20px;
+        background-color: black;
         position: fixed;
         left: 0;
         right: 0;
-        top: 129px;
+        top: 125px;
         z-index: 10;
 
         @media (max-width: 767px) {
@@ -39,8 +40,9 @@
         padding: 0;
 
         i {
+          font-family: 'i1kanboard';
           &:before {
-            content: "+";
+            content: "7";
             display: block;
             font-weight: 300;
             font-size: 1.4rem;
@@ -48,7 +50,7 @@
 
           &:hover,
           &:focus {
-            color: white;
+            color: #7a7a7a;
           }
         }
       }
@@ -142,7 +144,7 @@
         border-top-right-radius: 5px;
         border-top-left-radius: 5px;
         padding: 10px;
-        border: 0 none;
+        border: 1px solid black;
 
         &.board-column-header {
           position: sticky;
@@ -163,8 +165,9 @@
       }
 
       td {
-        background-color: $default-bg-color-2;
+        background-color: rgba(255,255,255, 0.25);
         border-style: none;
+        border-bottom: 5px solid black;
       }
 
       th:not(.board-swimlane-header) {
@@ -196,7 +199,7 @@
       &::before {
         content: "";
         height: 49px;
-        background-color: $default-bg-color;
+/*        background-color: $default-bg-color;  */
         position: fixed;
         left: 0;
         right: 0;

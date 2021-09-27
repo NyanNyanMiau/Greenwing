@@ -1,5 +1,5 @@
 <section id="task-summary">
-    <div class="task-summary-title color-<?= $task['color_id'] ?>"> 
+    <div class="task-summary-title color-<?= $task['color_id'] ?>">
        <h2><?= $this->text->e($task['title']) ?></h2>
     </div>
 

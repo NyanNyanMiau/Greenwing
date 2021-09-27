@@ -1,4 +1,5 @@
-$default-bg-color: #fafcff;
+$default-bg-color: rgb(248,248,248);
+
 $default-bg-color-1: darken($default-bg-color, 1);
 $default-bg-color-2: darken($default-bg-color, 2);
 $default-bg-color-3: darken($default-bg-color, 3);
@@ -13,8 +14,8 @@ $default-bg-color-90: darken($default-bg-color, 90);
 
 $default-border-color: #ccdcf3;
 
-$default-color: #304b6f;
-$default-text-color: #628bc5;
+$default-color: #111;
+$default-text-color: #333;
 
 $danger-color: #f24262;
 $success-color: #65ae5c;
@@ -26,3 +27,22 @@ $secondary-color: #628bc5;
 
 $task-board-meta-border-color: #e1e8f5;
 $task-board-meta-bg-color: #fbfbfb;
+
+$task-planned-color: #5A607F;
+$task-due-color: #0058FF;
+$task-overdue-color: #FF0000;
+$task-closed-color: #10BF2B;
+
+$project-header-bg-color: #F6F6F6;
+
+$special-highlight-color: #7E84A3;
+
+/*identifier and tags color*/
+$ident-color: #868E96;
+$ident-bg-color: #E9ECEF;
+
+
+$theme-content-bg-color: #fff;
+$btn-light-active-color: #7E84A3;
+
+$theme-dark-color: #000;

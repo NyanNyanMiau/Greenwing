@@ -6,3 +6,18 @@ h5,
 h6 {
   color: inherit;
 }
+
+.sidebar-content > h2,
+.sidebar-content > h3 {
+  color: white;
+}
+
+.text-gray,
+.fa.text-gray {
+	color: $ident-color;
+}
+
+.text-lightgray,
+.fa.text-lightgray {
+	color : #E9ECEF
+}

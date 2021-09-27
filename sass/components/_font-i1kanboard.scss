@@ -1,0 +1,26 @@
+/* overides font awesome icons */
+
+$new-icons: (
+	"dashboard"		: "*",
+	"plus"			: "+",
+	"folder"		: ",",
+	"pri-pro-new"	: "-", /*new privat project*/
+	"screen"		: ".",
+	"calendar"		: "/",
+	"bullhorn"		: "0",
+	"tasks-due"		: "1",
+	"tasks-overdue"	: "2",
+	"tasks"			: "3",
+	"newtask"		: "7",
+	"subtasks"		: "8"
+);
+
+@each $name, $char in $new-icons {
+	.fa.fa-#{$name} {
+		font-family: 'i1kanboard';
+		&:before {
+			content: $char;
+			line-height: 1;
+		}
+	}
+}

@@ -163,6 +163,7 @@ header {
 .project-header,
 .page-header {
   padding: 0;
+  margin-bottom: 10px;
 }
 
 .page > #main > .project-header,
@@ -203,10 +204,10 @@ header {
 .page-header {
   h2 {
     border-bottom: 0;
-    font-weight: 300;
+    font-weight: 500;
     padding: 1rem 0;
-    color: $default-color;
-
+    color: white;
+	
     ~ ul {
       margin: 0;
       background-color: $default-bg-color-1;
@@ -214,11 +215,11 @@ header {
     }
 
     a {
-      color: $default-color;
+      color: white;
 
       &:hover,
       &:focus {
-        color: black;
+        color: $btn-light-active-color;
         text-decoration: none;
       }
     }
@@ -229,23 +230,29 @@ header {
     text-align: initial;
     width: 100%;
 
+	display: flex;
+	flex-wrap: wrap;
+
     li {
       padding-right: 0;
 
-      @media (max-width: 767px) {
+      @media (max-width: 400px) {
         display: block;
+      }
+      @media (min-width: 401px) AND (max-width: 767px) {
+		white-space: nowrap;
+		width: 50%;
       }
 
       a {
         color: initial;
         text-decoration: none;
-        font-size: 0.9rem;
         line-height: 45px;
         display: inline-block;
         padding: 0 15px;
         transition: background-color 0.3s;
 
-        @media (max-width: 767px) {
+        @media (max-width: 400px) {
           display: block;
         }
 
@@ -256,7 +263,8 @@ header {
 
         i.fa {
           margin-right: 8px;
-          color: $default-bg-color-15;
+          font-size: 16px;
+          color: $theme-dark-color;
         }
       }
 

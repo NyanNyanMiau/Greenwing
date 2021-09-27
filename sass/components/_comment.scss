@@ -1,8 +1,9 @@
 .accordion-content.comments,
 .comments {
+  background-color: white;
+  border-radius: $default-radius;
   .comment-sorting {
     margin: 15px 0;
-
     a {
       margin-left: 10px;
       color: $default-color;
@@ -21,7 +22,7 @@
     padding: 15px;
     display: flex;
     margin-bottom: 15px;
-    align-items: center;
+    align-items: start;
 
     .avatar-left {
       float: none;
@@ -44,6 +45,7 @@
 
         .comment-date {
           color: $default-text-color;
+          font-weight: 300;
         }
       }
 

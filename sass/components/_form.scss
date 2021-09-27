@@ -7,7 +7,7 @@ label {
 
 }
 
-input:not(.select2-search__field):not([type="checkbox"]):not([name="notifications_filter"]):not([name="positionChoice"]),
+input:not(.select2-search__field):not([type="checkbox"]):not([type="radio"]):not([name="notifications_filter"]):not([name="positionChoice"]),
 input[type="number"],
 input[type="date"],
 input[type="email"],
@@ -71,7 +71,7 @@ textarea {
 }
 
 .js-submit-buttons-rendered {
-  margin-bottom: 1rem;
+  margin-bottom: 0rem;
 }
 
 input#form-avatar {
@@ -79,6 +79,7 @@ input#form-avatar {
 }
 
 input[type="radio"] {
+  margin-top: 0;
   margin-right: 5px;
 }
 

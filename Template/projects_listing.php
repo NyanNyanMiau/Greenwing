@@ -50,7 +50,7 @@
                         'project' => $project,
                     )) ?>
                 </div>
-                
+
             </div>
         <?php endforeach ?>
     </div>

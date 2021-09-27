@@ -1,0 +1,12 @@
+.dashboard-comments {
+
+	.comment-date {
+		font-weight: 500;
+	}
+	.markdown {
+		p em {
+			color: $task-planned-color;
+			font-size: 0.85rem;
+		}
+	}
+}

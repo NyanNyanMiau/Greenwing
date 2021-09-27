@@ -27,15 +27,10 @@ $task-colors: (
   .color-picker-square.color-#{$name} {
     background-color: $hex;
   }
-  li.task-tag {
-    background-color: lighten(black, 80);
-    color: #777a7d;
-
-    &.color-#{$name} {
-      border-style: none;
-      color: $hex;
-      background-color: lighten($hex, 30);
-    }
+  li.task-tag.color-#{$name} {
+    border-style: none;
+    color: $hex;
+    background-color: lighten($hex, 30);
   }
 
   .board-task-list .task-board.color-#{$name} {
@@ -58,6 +53,8 @@ $task-colors: (
       font-size: 0.8rem;
     }
   }
+  
+  .task-list .task-element.color-#{$name},
   .table-list .table-list-row.color-#{$name} {
     border-left: 5px solid $hex;
 
@@ -67,11 +64,7 @@ $task-colors: (
     }
   }
 
-  .table-list-category {
-    background-color: lighten(black, 90);
-    color: #777a7d;
-
-    &.table-list-category.color-#{$name} {
+  .table-list-category.table-list-category.color-#{$name} {
       background-color: lighten($hex, 30);
       border-style: none;
       color: $hex;
@@ -80,7 +73,7 @@ $task-colors: (
         color: $hex;
       }
     }
-  }
+
 
   .task-summary-title.color-#{$name} img {
     background-color: $hex;
@@ -88,4 +81,21 @@ $task-colors: (
   .page > #main > .project-header.color-#{$name} {
     border-bottom: 3px solid $hex;
   }
+}
+
+
+$due-colors: (
+  "planned": #5A607F,
+  "due": #0058FF,
+  "overdue": #FF0000,
+  "closed": #10BF2B,
+);
+
+@each $name, $hex in $due-colors {
+	.text-color-#{$name} {
+		color: $hex!important;
+	}
+	.bg-color-#{$name} {
+		background-color: $hex!important;
+	}
 }

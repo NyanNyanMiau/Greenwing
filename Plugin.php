@@ -3,6 +3,7 @@
 namespace Kanboard\Plugin\Greenwing;
 
 use Kanboard\Core\Plugin\Base;
+use Kanboard\Core\Translator;
 
 class Plugin extends Base {
 
@@ -42,8 +43,32 @@ class Plugin extends Base {
 		$this->template->setTemplateOverride( 'password_reset/create', 'Greenwing:password_reset' );
 		$this->template->setTemplateOverride( 'project_header/search', 'Greenwing:search' );
 		$this->template->setTemplateOverride( 'board/view_private', 'Greenwing:view_private' );
-		$this->template->setTemplateOverride( 'project_header/views', 'Greenwing:project_header/views' );		
-		$this->template->setTemplateOverride( 'plugin/show', 'Greenwing:plugin/show' );		
+		$this->template->setTemplateOverride( 'project_header/views', 'Greenwing:project_header/views' );
+		$this->template->setTemplateOverride( 'plugin/show', 'Greenwing:plugin/show' );
+
+
+		// new - core/http/route.php -> findRoute -> array_reverse added to override known routes
+		$this->route->addRoute('/', 'MyDashboardController', 'show', 'Greenwing');
+		$this->route->addRoute('/dashboard', 'MyDashboardController', 'show', 'Greenwing');
+		$this->route->addRoute('/dashboard/:user_id', 'MyDashboardController', 'show', 'Greenwing');
+
+
+		$this->route->addOverride('DashboardController', 'show', '', ['controller' => 'MyDashboardController', 'plugin' => 'Greenwing']);
+		$this->route->addOverride('DashboardController', 'tasks', '', ['controller' => 'MyDashboardController', 'plugin' => 'Greenwing']);
+		$this->route->addOverride('DashboardController', 'projects', '', ['controller' => 'MyDashboardController', 'plugin' => 'Greenwing']);
+
+
+// 		$this->template->setTemplateOverride( 'header/title', 'Greenwing:header_title' );
+		$this->template->setTemplateOverride( 'dashboard/sidebar', 'Greenwing:dashboard/sidebar' );
+
+		$this->container['projectPagination'] = $this->container->factory( function ( $c ) {
+			return new \Kanboard\Plugin\Greenwing\Pagination\MyProjectPagination( $c );
+		} );
+
+		$this->container['myTaskPagination'] = $this->container->factory( function ( $c ) {
+			return new \Kanboard\Plugin\Greenwing\Pagination\MyTaskPagination( $c );
+		} );
+
 
 		$this->container['colorModel'] = $this->container->factory( function ( $c ) {
 			return new ColorModel( $c );
@@ -53,6 +78,8 @@ class Plugin extends Base {
 			return new TaskCreationModel( $c );
 		} );
 
+		$this->helper->register( 'dashboardHelper', '\Kanboard\Plugin\Greenwing\Helper\DashboardHelper' );
+
 		$this->helper->register( 'myTaskHelper', '\Kanboard\Plugin\Greenwing\MyTaskHelper' );
 		$this->helper->register( 'myAvatarHelper', '\Kanboard\Plugin\Greenwing\MyAvatarHelper' );
 		$this->helper->register( 'myFormHelper', '\Kanboard\Plugin\Greenwing\MyFormHelper' );
@@ -61,9 +88,36 @@ class Plugin extends Base {
 
 		$this->setContentSecurityPolicy( array( 'font-src' => "'self' fonts.gstatic.com" ) );
 
-		$manifest = json_decode( file_get_contents( __DIR__ . '/dist/rev-manifest.json', true ), true );
+		$this->hook->on('template:layout:js', array('template' => 'plugins/Greenwing/Assets/bootstrap-5.0.2/dom/selector-engine.js'));
+		$this->hook->on('template:layout:js', array('template' => 'plugins/Greenwing/Assets/bootstrap-5.0.2/dom/event-handler.js'));
+		$this->hook->on('template:layout:js', array('template' => 'plugins/Greenwing/Assets/bootstrap-5.0.2/dom/manipulator.js'));
+		$this->hook->on('template:layout:js', array('template' => 'plugins/Greenwing/Assets/bootstrap-5.0.2/dom/data.js'));
+		$this->hook->on('template:layout:js', array('template' => 'plugins/Greenwing/Assets/bootstrap-5.0.2/base-component.js'));
+		$this->hook->on('template:layout:js', array('template' => 'plugins/Greenwing/Assets/bootstrap-5.0.2/collapse.js'));
 
+		$manifest = json_decode( file_get_contents( __DIR__ . '/dist/rev-manifest.json', true ), true );
 		$this->hook->on( "template:layout:css", array( "template" => "plugins/Greenwing/dist/" . $manifest['main.css'] ) );
+
+
+		$this->template->hook->attach('template:task_file:show:after-files', 'Greenwing:task_actions/file_create');
+		$this->template->hook->attach('template:task_internal_link:show:after-table', 'Greenwing:task_actions/internal_link_create');
+		$this->template->hook->attach('template:task_external_link:show:after-table', 'Greenwing:task_actions/external_link_find');
+		$this->template->hook->attach('template:subtask:show:after-table', 'Greenwing:task_actions/subtask_create');
+
+
+	}
+
+// 	public function getClasses() {
+// 		return [
+// 				'Plugin\Greenwing\Controller' => [
+// 						'MyDashboardController'
+// 				]
+// 		];
+// 	}
+
+	public function onStartup()
+	{
+		Translator::load($this->languageModel->getCurrentLanguage(), __DIR__.'/Locale');
 	}
 
 	public function getPluginName() {

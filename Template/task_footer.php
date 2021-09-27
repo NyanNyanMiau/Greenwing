@@ -1,5 +1,5 @@
 <div class="task-board-icons">
-  
+
     <div class="task-board-icons-row-wrapper">
         <div class="task-board-icons-row">
             <?php if ($task['is_milestone'] == 1): ?>
@@ -94,6 +94,6 @@
     </div>
 
     <?= $this->render('board/task_avatar', array('task' => $task)) ?>
-</div>  
+</div>
 
 <?= $this->hook->render('template:board:task:footer', array('task' => $task)) ?>

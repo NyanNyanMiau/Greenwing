@@ -91,6 +91,8 @@
       background-color: $task-board-meta-bg-color;
 
       li.task-tag {
+        background-color: $ident-bg-color;
+        color: $ident-color;
         border: 0 none;
         padding: 2px 4px;
         margin: 0 2px 2px 0;

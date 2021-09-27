@@ -1,9 +1,19 @@
+$enable-negative-margins: true;
+
+@import "bootstrap-5.0.2/scss/bootstrap-grid";
+
+@import "bootstrap-5.0.2/scss/mixins/buttons";
+@import "bootstrap-5.0.2/scss/mixins/transition";
+@import "bootstrap-5.0.2/scss/transitions";
+
+
 @import "modules/colors";
 @import "modules/variables";
-@import "modules/plugins";
+@import "modules/plugins"; 
 
 @import "base/body";
-@import "base/typography";
+@import "base/typography_poppins";
+@import "base/typography_i1kanboard";
 
 @import "components/button";
 @import "components/dropdown";
@@ -42,7 +52,13 @@
 @import "layout/filter-box";
 @import "layout/board";
 @import "layout/analytics";
-@import 'layout/cloudtemple';
+
 
 @import "pages/login";
 @import "pages/public-board";
+
+@import "components/dashboard-project";
+@import "components/dashboard-tasks";
+@import "components/dashboard-comments";
+
+@import "components/font-i1kanboard";

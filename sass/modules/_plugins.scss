@@ -30,23 +30,45 @@
 
 //Compatibility with Gantt plugin
 .page #main .menu-inline {
-  padding-top: 130px;
+  margin-top: 130px;
+  padding: 10px;
+  border-radius: $default-radius;
+  background-color: white;
+  
+  .fa {
+  	margin-right: 5px;
+  }
 }
 
 .menu-inline ~#gantt-chart {
   margin-top: 10px;
 }
+
 #gantt-chart {
+
+  background-color: white;
+  
+  div.ganttview {
+  	border: 0 none;
+  }
   margin-bottom: 10px;
   margin-top: 110px;
 
   .ganttview-vtheader-series-name:last-child {
-    border-bottom: 1px solid #999;
+    border-bottom: 0px solid #999;
   }
 
   .ganttview-block-text {
       height: 100%;
   }
+
+  div.ganttview-block-container {
+	height: 31px;
+  }
+  div.ganttview-block {
+  	height: 26px;
+  }
+  
 }
 
 div.ganttview-hzheader-month,
@@ -156,4 +178,12 @@ input[name=DueDate_Board_Dividers] {
       }
     }
   }
+}
+
+
+#mynetwork {
+	background-color: white;
+}
+.task-show-title.color-light_green {
+	color: white;
 }

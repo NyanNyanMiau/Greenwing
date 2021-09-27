@@ -5,41 +5,48 @@
   &[id="dashboard"] .sidebar,
   &[id="user-section"] .sidebar {
     top: 125px;
-    max-height: calc(100vh - 150px);
+    height: calc(100vh - 125px);
 
     @media (max-width: 767px) {
       top: 0;
       max-height: initial;
+      height: initial;
     }
   }
 
   &[id="config-section"] .sidebar {
     top: 75px;
-    max-height: calc(100vh - 100px);
+    height: calc(100vh - 75px);
 
     @media (max-width: 767px) {
       top: 0;
       max-height: initial;
+      height: initial;
     }
   }
 
   &[id="task-view"] .sidebar {
     top: 145px;
-    max-height: calc(100vh - 170px);
+    max-height: calc(100vh - 145px);
 
     @media (max-width: 767px) {
       top: 0;
       max-height: initial;
+      height: initial;
     }
   }
 }
 
 .sidebar {
-  padding: 0 15px;
+  padding: 10px 5px 0;
   position: -webkit-sticky;
   position: sticky;
   overflow-y: auto;
   top: 0;
+  background-color: $theme-content-bg-color;
+  width: 260px;
+  border-radius: 0 $default-radius 0 0;
+
 
   @media (max-width: 767px) {
     position: relative;
@@ -47,25 +54,47 @@
     max-width: 100%;
   }
 
-  ul {
+  @media (min-width: 768px) AND (max-width: 1024px) {
+    min-width: auto;
+    width: 45px;
+    white-space: nowrap;
+  }
+
+  > ul {
+  	margin-left: -5px;
+  	
     li {
       padding-left: 0;
-      border-left: 3px solid #e2eefe;
+      border-left: 3px solid #fff;
+      border-radius: 4px;
       border-bottom-color: $default-border-color;
       border-bottom: 0 none;
       line-height: initial;
+	  position: realtive;
+
+      i {
+	    min-width: 16px;
+	    position: absolute;
+	    font-size: 16px;
+	    margin-top: 2px;
+	    margin-left: -25px;
+	    pointer-events: none;
+      }
 
       a {
         color: inherit;
         display: block;
-        padding: 8px 10px;
-        border-top-right-radius: 5px;
-        border-bottom-right-radius: 5px;
-
-        i {
-          display: none;
-        }
+        padding: 5px 5px 5px 10px;
+        border-top-right-radius: $default-radius;
+        border-bottom-right-radius: $default-radius;
+        font-weight: 500;
       }
+
+	& > i {
+	    margin-left: 7px;
+	    margin-top: 7px;
+    }
+
 
       &.active,
       &:hover,
@@ -73,22 +102,23 @@
         padding-left: 0;
         border-left-color: $default-color;
         border-left: 3px solid;
+        font-weight: 500;
 
         a,
         a:hover,
         a:focus {
           color: inherit;
-          background-color: lighten($default-color, 65%);
+          background-color: lighten(#000, 85%);
+          font-weight: 500;
         }
       }
 
       &.active {
         a {
-          background-color: lighten($default-color, 60%);
-          font-weight: 500;
+          background-color: lighten(#000, 95%);
 
           &:hover {
-            background-color: lighten($default-color, 60%);
+            background-color: lighten(#000, 95%);
           }
         }
       }
@@ -97,6 +127,42 @@
 }
 
 .sidebar-content {
-  padding: 0 15px;
+  padding: 0 15px 30px;
   max-width: 100%;
 }
+
+.sidebar-content form {
+	background-color: white;
+	border-radius: $default-radius;
+	padding: 10px 15px 15px 15px;
+}
+
+.sidebar {
+	.SubtaskController_create,
+	.TaskFileController_create,
+	.TaskInternalLinkController_create,
+	.TaskExternalLinkController_find,
+	.TaskFileController_screenshot,
+	.CommentController_create
+	{
+		display:none;
+	}
+}
+
+/* with icon */
+#dashboard > .sidebar,
+.sidebar.sidebar-icons {
+	> ul li a {
+		padding-left: 33px;
+		
+		@media (min-width: 768px) AND (max-width: 1024px) {
+			padding-left: 50px;
+			i {
+				margin-left: -41px;
+			}
+		}
+		
+	}
+}
+
+	

@@ -61,12 +61,17 @@
     background-color: $default-bg-color-1;
   }
 
-  &:nth-child(even) {
-    background-color: #fafcff;
-
+  &:nth-child(even),
+  &:nth-child(odd) {
     &:hover,
     &:focus {
       background-color: $default-bg-color-1;
     }
+  }
+  &:nth-child(even) {
+  	background-color: #fafcff;
+  }
+  &:nth-child(odd) {
+   	background-color: #fff;
   }
 }

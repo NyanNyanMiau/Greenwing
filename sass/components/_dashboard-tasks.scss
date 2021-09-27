@@ -1,0 +1,128 @@
+$projects-border-radius: 1.5*$default-radius;
+.project-list {
+	
+	font-size: 14px;
+	background-color: transparent;
+	
+	vr {
+		background-color: $default-border-color;
+		width: 1px;
+		height: 100%;
+	}
+	
+	.collapseOpener { 
+		i {
+			@include arrow-down;
+		}
+		&.collapsed i {
+			@include arrow-right;
+		}
+	}
+	
+	.project-wrapper {
+		background-color: $project-header-bg-color;
+		
+		&:not(:last-child):not(.open) {
+			border-bottom: 2px solid #fff;
+		}
+		
+		&:first-child {
+			border-radius: $projects-border-radius $projects-border-radius 0 0;
+		}
+		&:last-child {
+			border-radius: 0 0 $projects-border-radius $projects-border-radius;
+			
+		}
+	}
+	
+	.project-header {
+		border-left: 5px solid transparent;
+		.headline {
+			i.fa {
+				font-size: 16px;
+			}
+			.title a {
+				font-weight: 500;
+			}
+			.project_identifier {
+				display: none;
+			}
+		}
+		.taskstat {
+			font-size: 12px; 
+
+			.due-color,
+			.overdue-color {
+				display: inline-block;
+				min-width: 20px;
+				height: 20px;
+				line-height: 20px;
+				border-radius: 1em;
+				text-align: center;
+				color: #fff;
+				font-weight: 500;
+				padding: 0 5px;
+			}
+			.due-color {
+				background-color: $task-due-color;
+			}
+			.overdue-color {
+				background-color: $task-overdue-color;
+			}
+		}
+		.taskstat_ac {
+			font-size: 14px;
+			font-weight: 500;
+		}
+	
+	}
+	
+	.task-list {
+		background-color: #fff;
+		
+		.task-header {
+			i.fa-tasks {
+				font-size: 16px;
+			}
+			.task-status .fa {
+				font-size: 16px;
+				margin-left: 10px;
+				margin-top: 2px;
+			}
+		}
+		.tasks-list-icons {
+			line-height: 1em;
+			font-size: 14px;
+		}
+		.markdown > *:first-child {
+			margin-top: 0;
+			padding-top: 0;
+		}
+		.markdown > *:last-child {
+			margin-bottom: 0;
+			padding-bottom: 0;
+		}
+	}
+	
+	.subtask {
+		.subtask-header {
+			i.fa-subtasks {
+				font-size: 16px;
+			}
+			.subtask-title {
+				margin-left: 10px;
+				width: 18px;
+				overflow: hidden;
+				display: inline-block;
+				font-size: 16px;
+				white-space: nowrap;
+				vertical-align: text-top;
+				i {
+					margin-right: 5px;
+					margin-top: 2px;
+				}
+			}
+		}
+	}
+
+}
