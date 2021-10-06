@@ -31,7 +31,11 @@ select {
   max-width: 100%;
   font-family: 'Montserrat', sans-serif;
   color: inherit;
-  
+
+  &::placeholder {
+    color: #333;
+  }
+
   &:focus {
     color: #495057;
     background-color: white;
