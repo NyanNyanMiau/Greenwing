@@ -218,6 +218,8 @@
     .task-list-subtasks {
       .subtask-cell a {
         color: $default-color;
+        align-items: center;
+        display: inline-flex;
       }
     }
 
@@ -258,9 +260,10 @@
         border-top: 1px solid $default-border-color;
         border-left: 1px solid $default-border-color;
       }
-      span {
-        padding: 8px;
-
+      > span {
+		&:first-child {
+        padding-left: 11px;
+		}
         a {
           &:hover,
           &:focus {
@@ -268,7 +271,7 @@
           }
 
           i {
-            padding-right: 8px;
+            margin-right: 4px;
           }
         }
       }
