@@ -12,17 +12,16 @@
 </div>
 
 <p class="mb-2 sh-color"><?= t("Team") ?></p>
-<div class="d-flex align-items-center w-100 mb-4">
+<div class="d-flex flex-wrap align-items-center w-100 mb-2">
 	<?php foreach ((array) $projectData["team"] as $userId => $username):
 		if ( $project['owner_id'] != $userId ): ?>
-
 			<?= $this->avatar->render(
 				$userId,
 				$username,
 				'',
 				'',
 				'',
-				'me-1',
+			    'mb-1 '. (count($projectData["team"]) < 9 ? 'me-1' : 'me-n1'),
 				 38
 			) ?>
 		<?php endif; ?>
