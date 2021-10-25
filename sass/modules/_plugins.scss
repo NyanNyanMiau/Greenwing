@@ -34,7 +34,9 @@
   padding: 10px;
   border-radius: $default-radius;
   background-color: white;
-  
+  .active {
+  	text-decoration: underline;
+  }  
   .fa {
   	margin-right: 5px;
   }
@@ -60,13 +62,11 @@
 
   .ganttview-block-text {
       height: 100%;
+      width: inherit!important;
   }
 
   div.ganttview-block-container {
 	height: 31px;
-  }
-  div.ganttview-block {
-  	height: 26px;
   }
   
 }

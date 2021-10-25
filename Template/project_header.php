@@ -1,5 +1,6 @@
 <div class="project-header <?= $filters['plugin'] && gettype($filters['plugin']) == 'array' ? 'color-' : '' ?><?= $filters['plugin'] && gettype($filters['plugin']) == 'array' ? $filters['plugin']['task']['color_id'] : '' ?>">
-    <?php $filters['plugin'] = '' ?>
+    <?php   // why was this? This prevents the filter work in gantt view AND OTHER EXT using the FILTER!
+            //$filters['plugin'] = '' ?>
 
     <?= $this->hook->render('template:project:header:before', array('project' => $project)) ?>
 

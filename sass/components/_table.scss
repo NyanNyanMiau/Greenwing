@@ -122,6 +122,12 @@ table {
   padding-right: 3px;
 }
 
+.subtasks-table .subtask-table-td {
+	line-height: 1;
+	.dropdown-menu {
+		display: inline-block;
+	}
+}
 .subtasks-table.table-striped.table-scrolling a {
   color: $default-color;
   text-decoration: none;
