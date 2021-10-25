@@ -21,7 +21,7 @@
 				'',
 				'',
 				'',
-			    'mb-1 '. (count($projectData["team"]) < 9 ? 'me-1' : 'me-n1'),
+			    'mb-1 '. (count($projectData["team"]) < 9 ? 'me-1' : 'me-n2'),
 				 38
 			) ?>
 		<?php endif; ?>
