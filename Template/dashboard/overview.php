@@ -24,7 +24,7 @@ function getPercent($i = 0, $total = 1, $prec=0){
 			<?php $projectData = $project_overview[$project['id']]; ?>
 			<div class="project-element d-flex flex-column me-3 mb-3">
 
-				<div class="headline"><?= $this->render('Greenwing:dashboard/overview_project_header', array(
+				<div class="headline d-flex"><?= $this->render('Greenwing:dashboard/overview_project_header', array(
 						'project' => $project,
 				)) ?></div>
 
