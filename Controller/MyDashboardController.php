@@ -90,7 +90,7 @@ class MyDashboardController extends BaseController
                     'futureTime' => $futureDueTime,
                     'time' => time(),
                     'active' => $active,
-                    'planned' => $active - $due - $overdue,
+                    'planned' => $active - $inDueTime - $overdue,
                     'due' => $inDueTime,
                     'overdue' => $overdue,
                     'closed' => $closed,
