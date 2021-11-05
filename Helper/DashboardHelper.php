@@ -102,7 +102,7 @@ class DashboardHelper extends Base
     public function getProjectDueCount(array $project)
     {
         // due is set, check if in due end period
-        $futureDue = abs(intval($this->projectMetadataModel->get($projectId, 'DueDate_Board_Distant_Future')));
+        $futureDue = abs(intval($this->projectMetadataModel->get($project['id'], 'DueDate_Board_Distant_Future')));
         if (!$futureDue) { $futureDue = 3; }
         $futureDueTime = strtotime('+' . strval($futureDue) . 'days');
 

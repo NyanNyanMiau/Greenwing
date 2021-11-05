@@ -48,12 +48,12 @@
   transition: all 0.3s;
 
   @include button(
-    rgba($primary-color, 0.1),
-    $primary-color,
-    rgba($primary-color, 0.1),
-    rgba($primary-color, 0.2),
-    $primary-color,
-    rgba($primary-color, 0.2)
+    rgba($primary-color, 0.0),
+    rgba($primary-color, 0.8),
+    rgba($primary-color, 0.8),
+    rgba($primary-color, 0.8),
+    white,
+    rgba($primary-color, 0.8)
   );
 
   &.btn-blue {

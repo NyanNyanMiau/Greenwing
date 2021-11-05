@@ -16,7 +16,9 @@ $task-colors: (
   "cyan": #49cce0,
   "lime": #5fc55f,
   "light_green": #4af74a,
-  "amber": #f1d042
+  "amber": #f1d042,
+  "black": #000000,
+  "light": #ffffff
 );
 
 .color-picker-square.color- {
@@ -24,6 +26,9 @@ $task-colors: (
 }
 
 @each $name, $hex in $task-colors {
+  .text-#{$name} {
+    color: $hex!important;
+  }
   .color-picker-square.color-#{$name} {
     background-color: $hex;
   }
