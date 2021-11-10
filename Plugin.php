@@ -95,6 +95,8 @@ class Plugin extends Base {
 		$this->hook->on('template:layout:js', array('template' => 'plugins/Greenwing/Assets/bootstrap-5.0.2/base-component.js'));
 		$this->hook->on('template:layout:js', array('template' => 'plugins/Greenwing/Assets/bootstrap-5.0.2/collapse.js'));
 
+		$this->hook->on('template:layout:js', array('template' => 'plugins/Greenwing/Assets/main.js'));
+
 		$manifest = json_decode( file_get_contents( __DIR__ . '/dist/rev-manifest.json', true ), true );
 		$this->hook->on( "template:layout:css", array( "template" => "plugins/Greenwing/dist/" . $manifest['main.css'] ) );
 

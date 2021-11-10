@@ -65,6 +65,11 @@
           width: auto;
           height: auto;
 
+		  background: none;
+		  color: #000;
+		  border: none;
+		  
+		    
           a {
             width: 26px;
             height: 26px;
@@ -74,13 +79,18 @@
             .dots-menu__icon {
               margin-top: 5px;
             }
+            
+            &:hover,
+            &:hover i {
+            	color: #7a7a7a;
+            }
           }
         }
       }
 
       .board-column-title {
         font-weight: 500;
-        font-size: 0.9rem;
+        padding-left: 10px;
       }
 
       .task-count {

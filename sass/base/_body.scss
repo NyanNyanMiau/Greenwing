@@ -135,3 +135,21 @@ article.markdown {
 div.c3 {
 	background-color: white;
 }
+
+.collapseOpener.collapsed .fa-caret-down:before {
+	content: "\f0da";
+}
+
+#fullPageLoader {
+    position: fixed;
+    top: 0;
+    left: 0;
+	width: 100vw;
+    height: 100vh;
+    z-index: 10000;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
