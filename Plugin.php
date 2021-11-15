@@ -61,6 +61,7 @@ class Plugin extends Base {
 // 		$this->template->setTemplateOverride( 'header/title', 'Greenwing:header_title' );
 		$this->template->setTemplateOverride( 'dashboard/sidebar', 'Greenwing:dashboard/sidebar' );
 
+		$container = $this->container;
 		$this->container['projectPagination'] = $this->container->factory( function ( $c ) {
 			return new \Kanboard\Plugin\Greenwing\Pagination\MyProjectPagination( $c );
 		} );
@@ -100,6 +101,7 @@ class Plugin extends Base {
 		$manifest = json_decode( file_get_contents( __DIR__ . '/dist/rev-manifest.json', true ), true );
 		$this->hook->on( "template:layout:css", array( "template" => "plugins/Greenwing/dist/" . $manifest['main.css'] ) );
 
+		$this->template->hook->attach('template:layout:head', 'Greenwing:head');
 
 		$this->template->hook->attach('template:task_file:show:after-files', 'Greenwing:task_actions/file_create');
 		$this->template->hook->attach('template:task_internal_link:show:after-table', 'Greenwing:task_actions/internal_link_create');
@@ -107,6 +109,12 @@ class Plugin extends Base {
 		$this->template->hook->attach('template:subtask:show:after-table', 'Greenwing:task_actions/subtask_create');
 
 
+// 		$this->hook->on('model:project_duplication:aftertaskduplicate', ['\Kanboard\Plugin\Greenwing\Hook\TaskProjectDuplication', 'aftersave'] );
+
+// 		$this->hook->on('formatter:board:query', function($hook_values) use ($container) {
+// 		    $c = new \Kanboard\Plugin\Greenwing\Hook\ProjectTaskDuplication($container);
+// 		    $c->duplicateLinks($hook_values);
+// 		});
 	}
 
 // 	public function getClasses() {
