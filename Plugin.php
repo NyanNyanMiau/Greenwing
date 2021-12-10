@@ -5,6 +5,8 @@ namespace Kanboard\Plugin\Greenwing;
 use Kanboard\Core\Plugin\Base;
 use Kanboard\Core\Translator;
 
+use Kanboard\Model\TaskModel;
+
 class Plugin extends Base {
 
 	public function initialize() {
@@ -62,21 +64,21 @@ class Plugin extends Base {
 		$this->template->setTemplateOverride( 'dashboard/sidebar', 'Greenwing:dashboard/sidebar' );
 
 		$container = $this->container;
-		$this->container['projectPagination'] = $this->container->factory( function ( $c ) {
-			return new \Kanboard\Plugin\Greenwing\Pagination\MyProjectPagination( $c );
+		$this->container['projectPagination'] = $this->container->factory( function ($c) {
+			return new \Kanboard\Plugin\Greenwing\Pagination\MyProjectPagination($c);
 		} );
 
-		$this->container['myTaskPagination'] = $this->container->factory( function ( $c ) {
-			return new \Kanboard\Plugin\Greenwing\Pagination\MyTaskPagination( $c );
+		$this->container['myTaskPagination'] = $this->container->factory( function ($c) {
+			return new \Kanboard\Plugin\Greenwing\Pagination\MyTaskPagination($c);
 		} );
 
 
-		$this->container['colorModel'] = $this->container->factory( function ( $c ) {
-			return new ColorModel( $c );
+		$this->container['colorModel'] = $this->container->factory( function ($c) {
+			return new ColorModel($c);
 		} );
 
-		$this->container['taskCreationModel'] = $this->container->factory( function ( $c ) {
-			return new TaskCreationModel( $c );
+		$this->container['taskCreationModel'] = $this->container->factory( function ($c) {
+			return new TaskCreationModel($c);
 		} );
 
 		$this->helper->register( 'dashboardHelper', '\Kanboard\Plugin\Greenwing\Helper\DashboardHelper' );
@@ -109,12 +111,11 @@ class Plugin extends Base {
 		$this->template->hook->attach('template:subtask:show:after-table', 'Greenwing:task_actions/subtask_create');
 
 
-// 		$this->hook->on('model:project_duplication:aftertaskduplicate', ['\Kanboard\Plugin\Greenwing\Hook\TaskProjectDuplication', 'aftersave'] );
-
-// 		$this->hook->on('formatter:board:query', function($hook_values) use ($container) {
-// 		    $c = new \Kanboard\Plugin\Greenwing\Hook\ProjectTaskDuplication($container);
-// 		    $c->duplicateLinks($hook_values);
-// 		});
+		// relink tasks after project duplication
+		$this->hook->on('model:project_duplication:aftertaskduplicate', function($hook_values) use ($container) {
+		    $c = new \Kanboard\Plugin\Greenwing\Hook\ProjectTaskDuplication($container);
+		    $c->duplicateLinks($hook_values);
+		});
 	}
 
 // 	public function getClasses() {
