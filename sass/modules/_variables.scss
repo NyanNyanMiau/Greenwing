@@ -44,6 +44,14 @@ $task-colors: (
     &:focus {
       border-top-color: darken($hex, 10);
     }
+	.task-board-expanded {
+		background-color: tint-color($hex, 80%);
+	}
+	.task-board-header,
+	.task-board-title,
+	a.js-modal-large {
+		background-color: transparent!important;
+	}
   }
   .task-board-category.color-#{$name} {
     border-style: none;

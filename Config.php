@@ -4,3 +4,4 @@
 // Just copy your logo file in the plugin directory and uncomment the next line
 $GreenwingConfig['logo'] = 'bkp_logo_fff.svg';
 $GreenwingConfig['bg'] = '/plugins/Greenwing/src/img/Spacebkp_hoch.jpg';
+$GreenwingConfig['bg-blend'] = 'hard-light';
